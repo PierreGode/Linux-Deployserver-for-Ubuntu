@@ -1,5 +1,15 @@
 
 #!/bin/bash
+#####################################################################################################################
+#                                                                                                                   #
+#                              This script is written by Pierre Goude                                               #
+#  This program is open source; you can redistribute it and/or modify it under the terms of the GNU General Public  #
+#                                                                                                                   #
+#                                                                                                                   #
+#####################################################################################################################
+
+#This skript is not finished!
+
 
 ############## deploy server installation##################
 cd /etc/apache2/mods-enabled
