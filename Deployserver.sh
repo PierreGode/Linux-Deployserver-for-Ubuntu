@@ -1,11 +1,7 @@
 
-### for kickstart #ad att the beginning
 #!/bin/bash
-#printf "Content-type: text/html\n\n"
-#########################################3
 
-
-##############3 deploy server installation##################
+############## deploy server installation##################
 cd /etc/apache2/mods-enabled
 $ sudo ln -s ../mods-available/cgi.load
 
