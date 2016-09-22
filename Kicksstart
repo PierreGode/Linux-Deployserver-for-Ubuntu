@@ -1,0 +1,4 @@
+### for kickstart #ad att the beginning
+!/bin/bash
+printf "Content-type: text/html\n\n"
+#########################################
