@@ -12,7 +12,7 @@
 
 ############## deploy server installation##################
 clear
-echo "Making neccesery installs"
+echo "Making necessary installs"
 sleep 2
 sudo apt-get update
 sudo apt-get install curl -y
