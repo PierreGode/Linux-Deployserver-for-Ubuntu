@@ -15,6 +15,7 @@ clear
 echo "Making necessary installs"
 sleep 2
 sudo apt-get update
+sudo apt-get install -y isc-dhcp-Server inetutils-inetd tftpd-hpa syslinux nfs-kernel-Server
 sudo apt-get install wget -y
 sudo apt-get install curl -y
 sudo apt-get install apache2 -y
