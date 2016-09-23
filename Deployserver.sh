@@ -11,6 +11,7 @@
 #This skript is not finished!
 
 ############## deploy server installation##################
+sudo apt-get update
 sudo apt-get install curl -y
 sudo apt-get install apache2 -y
 sudo a2enmod cgi -y
