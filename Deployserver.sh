@@ -13,14 +13,12 @@
 #This scrip will mess your dhcp conf
 
 ############## deploy server installation##################
-cd /etc/apache2/mods-enabled
-$ sudo ln -s ../mods-available/cgi.load
- sudo apt-get install curl -y
- sudo apt-get install apache2 -y
- sudo a2enmod cgi -y
- sudo apt-get install isc-dhcp-server -y
- sudo service apache2 reload
- sudo echo '
+sudo apt-get install curl -y
+sudo apt-get install apache2 -y
+sudo a2enmod cgi -y
+sudo apt-get install isc-dhcp-server -y
+sudo service apache2 reload
+sudo echo '
 RUN_DAEMON="yes"
 OPTIONS="-l -s /var/lib/tftpboot"' >> /etc/default/tftpd-hpa
 /etc/init.d/tftpd-hpa restart
@@ -28,6 +26,8 @@ sudo mkdir /var/www/html/ubuntu
 sudo rm -rf /var/www/html/index.html
 sudo mkdir /var/lib/tftpboot/ubuntu
 sudo mkdir /var/lib/tftpboot/ubuntu/amd64
+cd /etc/apache2/mods-enabled
+$ sudo ln -s ../mods-available/cgi.load
 clear
 echo "Type IP"
 read depip
@@ -50,3 +50,12 @@ cd /var/lib/tftpd/
 sudo wget http://archive.ubuntu.com/ubuntu/dists/xenial-updates/main/installer-amd64/current/images/netboot/netboot.tar.gz´
 sudo gunzip *.gz
 sudo tar -xvf *.tar
+clear
+echo "Primary settings has been setup.. please check your dhcp conf for errors"
+echo "Remember to set bootfile name to /var/lib/tftpboot/pxelinux.0 in your dhcp"
+echo "upload kickstart file to /var/www/ubuntu/ and cofigure (example below) /var/lib/tftpboot/ubuntu-installer/amd64/boot-screens/txt.cfg"
+echo "'label install
+        menu label ^Ubuntu 14 Gen
+        kernel ubuntu-installer/amd64/linux
+        append ks=http://10.46.21.53/ubuntugeneric.cfg vga=788 initrd=ubuntu-installer/amd64/initrd.gz --- quiet'"
+        
