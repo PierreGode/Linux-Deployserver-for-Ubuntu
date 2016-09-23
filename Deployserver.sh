@@ -90,3 +90,4 @@ echo "'label install
         menu label ^Ubuntu 16 Gen
         kernel ubuntu-installer/amd64/linux
         append ks=http://192.168.1.5/ubuntugeneric.cfg vga=788 initrd=ubuntu-installer/amd64/initrd.gz --- quiet'"
+echo "END"
