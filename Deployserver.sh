@@ -24,7 +24,7 @@ OPTIONS="-l -s /var/lib/tftpboot"' >> /etc/default/tftpd-hpa
 sudo mkdir /var/www/html/ubuntu
 sudo rm -rf /var/www/html/index.html
 sudo mkdir /var/lib/tftpboot/ubuntu
-
+sudo mkdir /var/lib/tftpboot/ubuntu/amd64
 clear
 echo "Type IP"
 read depip
@@ -44,4 +44,3 @@ filename "pxelinux.0";
 
 sudo cp /usr/lib/syslinux/pxelinux.0 /var/lib/tftpboot/
 sudo echo 'tftp dgram udp wait root /usr/sbin/in.tftpd /usr/sbin/in.tftpd -s /var/lib/tftpboot' >> /etc/inetd.conf
-
