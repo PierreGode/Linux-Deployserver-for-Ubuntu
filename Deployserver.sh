@@ -32,13 +32,13 @@ read depip
 echo "Type range formatEX ( 1-200 )"
 read RanGE
 Myrange=$( echo $RanGE | cut -d '-' -f1 )
-Edrange=$( echo $RanGE | cut -d '-' -f2 )
+Endrange=$( echo $RanGE | cut -d '-' -f2 )
 suBnet=$( echo $depip | cut -c 1-9 )
 sudo echo "'
 allow booting;
 allow bootp;
 subnet $depip netmask 255.255.255 {
-range "$suBnet""$Myrange" "$suBnet""$Edrange";
+range "$suBnet""$Myrange" "$suBnet""$Endrange";
 option broadcast-address "$suBnet"255
 filename "pxelinux.0";
 }'" > /etc/dhcp/dhcpd.conf
