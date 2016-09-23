@@ -10,8 +10,6 @@
 
 #This skript is not finished!
 
-#This scrip will mess your dhcp conf
-
 ############## deploy server installation##################
 sudo apt-get install curl -y
 sudo apt-get install apache2 -y
