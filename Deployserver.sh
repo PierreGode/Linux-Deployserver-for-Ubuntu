@@ -41,6 +41,9 @@ range "$suBnet""$Myrange" "$suBnet""$Edrange";
 option broadcast-address "$suBnet"255
 filename "pxelinux.0";
 }'" >> /etc/dhcp/dhcpd.conf
-
 sudo cp /usr/lib/syslinux/pxelinux.0 /var/lib/tftpboot/
 sudo echo 'tftp dgram udp wait root /usr/sbin/in.tftpd /usr/sbin/in.tftpd -s /var/lib/tftpboot' >> /etc/inetd.conf
+cd /var/lib/tftpd/
+sudo wget http://archive.ubuntu.com/ubuntu/dists/xenial-updates/main/installer-amd64/current/images/netboot/netboot.tar.gz´
+sudo gunzip *.gz
+sudo tar -xvf *.tar
