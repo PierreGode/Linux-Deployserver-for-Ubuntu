@@ -57,6 +57,7 @@ allow bootp;
 subnet $depip netmask 255.255.255 {
 range "$suBnet""$Myrange" "$suBnet""$Endrange";
 option broadcast-address "$suBnet"255
+#option netbios-name-servers 192.168.1.1; 
 filename "pxelinux.0";
 }'" > /etc/dhcp/dhcpd.conf
 sudo cp /usr/lib/syslinux/pxelinux.0 /var/lib/tftpboot/
