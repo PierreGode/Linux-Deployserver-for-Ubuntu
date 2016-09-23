@@ -30,18 +30,23 @@ sudo mkdir /var/www/html/ubuntu
 sudo rm -rf /var/www/html/index.html
 sudo mkdir /var/lib/tftpboot/ubuntu
 
-sudo echo '
+clear
+echo "Type IP"
+read depip
+echo "Type range formatEX ( 1-200 )"
+read RanGE
+Myrange=$( echo $RanGE | cut -d '-' -f1 )
+Edrange=$( echo $RanGE | cut -d '-' -f2 )
+suBnet=$( echo $depip | cut -c 1-9 )
+sudo echo "'
 allow booting;
 allow bootp;
+subnet $depip netmask 255.255.255 {
+range "$suBnet""$Myrange" "$suBnet""$Edrange";
+option broadcast-address "$suBnet"255
+filename "pxelinux.0";
+}'" >> /etc/dhcp/dhcpd.conf
 
-subnet 192.168.2.0 netmask 255.255.255.0 {
-  range 192.168.2.xxx 192.168.2.xxx;
-  option broadcast-address 192.168.2.255;
-  option routers 192.168.2.xxx;
-  option domain-name-servers 192.168.2.xxx;
-
-  filename "pxelinux.0";
-}' >> /etc/dhcp/dhcpd.conf
 sudo cp /usr/lib/syslinux/pxelinux.0 /var/lib/tftpboot/
 sudo echo 'tftp dgram udp wait root /usr/sbin/in.tftpd /usr/sbin/in.tftpd -s /var/lib/tftpboot' >> /etc/inetd.conf
 
