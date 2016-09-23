@@ -10,7 +10,7 @@
 
 #This skript is not finished!
 
-##############3 deploy server installation##################
+############## deploy server installation##################
 cd /etc/apache2/mods-enabled
 $ sudo ln -s ../mods-available/cgi.load
  sudo apt-get install curl -y
