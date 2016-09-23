@@ -23,8 +23,6 @@ OPTIONS="-l -s /var/lib/tftpboot"' >> /etc/default/tftpd-hpa
 /etc/init.d/tftpd-hpa restart
 sudo mkdir /var/www/html/ubuntu
 sudo rm -rf /var/www/html/index.html
-sudo mkdir /var/lib/tftpboot/ubuntu
-sudo mkdir /var/lib/tftpboot/ubuntu/amd64
 cd /etc/apache2/mods-enabled
 $ sudo ln -s ../mods-available/cgi.load
 clear
@@ -69,6 +67,10 @@ TFTP_USERNAME="tftp"
 TFTP_DIRECTORY="/var/lib/tftpboot"
 TFTP_ADDRESS="[::]:69" 
 #TFTP_OPTIONS="--secure"' >>/etc/default/tftpd-hpa
+sudo update-inetd --enable BOOT
+sudo service tftpd-hpa restart
+sudo cp /usr/lib/syslinux/vesamenu.c32 /var/lib/tftpboot/
+sudo cp /usr/lib/syslinux/pxelinux.0 /var/lib/tftpboot/
 sudo wget http://archive.ubuntu.com/ubuntu/dists/xenial-updates/main/installer-amd64/current/images/netboot/netboot.tar.gz´
 sudo gunzip *.gz
 sudo tar -xvf *.tar
