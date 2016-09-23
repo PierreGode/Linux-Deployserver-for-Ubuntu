@@ -29,6 +29,20 @@ sudo mkdir /var/lib/tftpboot/ubuntu/amd64
 cd /etc/apache2/mods-enabled
 $ sudo ln -s ../mods-available/cgi.load
 clear
+if [ -d /etc/dhcp/ ] 
+then
+while true; do
+   read -p 'dhcp is already retup, do you really whant to overrite configuration? (y/n)?' yn
+   case $yn in
+    [Yy]* ) echo "Writing to dhcp.conf"
+            break;;
+    [Nn]* ) echo "Quiting"
+            sleep 1        
+            exit ;;
+    * ) echo 'Please answer yes or no.';;
+   esac
+done
+else
 echo "Type IP"
 read depip
 echo "Type range formatEX ( 1-200 )"
@@ -58,4 +72,4 @@ echo "'label install
         menu label ^Ubuntu 14 Gen
         kernel ubuntu-installer/amd64/linux
         append ks=http://10.46.21.53/ubuntugeneric.cfg vga=788 initrd=ubuntu-installer/amd64/initrd.gz --- quiet'"
-        
+fi
