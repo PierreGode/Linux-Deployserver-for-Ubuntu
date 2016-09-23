@@ -16,6 +16,7 @@ $ sudo ln -s ../mods-available/cgi.load
  sudo apt-get install curl -y
  sudo apt-get install apache2 -y
  sudo a2enmod cgi -y
+ sudo apt-get install isc-dhcp-server -y
  sudo service apache2 reload
  sudo echo '
 RUN_DAEMON="yes"
@@ -40,7 +41,7 @@ subnet $depip netmask 255.255.255 {
 range "$suBnet""$Myrange" "$suBnet""$Edrange";
 option broadcast-address "$suBnet"255
 filename "pxelinux.0";
-}'" >> /etc/dhcp/dhcpd.conf
+}'" > /etc/dhcp/dhcpd.conf
 sudo cp /usr/lib/syslinux/pxelinux.0 /var/lib/tftpboot/
 sudo echo 'tftp dgram udp wait root /usr/sbin/in.tftpd /usr/sbin/in.tftpd -s /var/lib/tftpboot' >> /etc/inetd.conf
 cd /var/lib/tftpd/
