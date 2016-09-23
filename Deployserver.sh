@@ -62,7 +62,13 @@ filename "pxelinux.0";
 }'" > /etc/dhcp/dhcpd.conf
 sudo cp /usr/lib/syslinux/pxelinux.0 /var/lib/tftpboot/
 sudo echo 'tftp dgram udp wait root /usr/sbin/in.tftpd /usr/sbin/in.tftpd -s /var/lib/tftpboot' >> /etc/inetd.conf
+sudo service isc-dhcp-server restart
 cd /var/lib/tftpd/
+sudo echo'
+TFTP_USERNAME="tftp"
+TFTP_DIRECTORY="/var/lib/tftpboot"
+TFTP_ADDRESS="[::]:69" 
+#TFTP_OPTIONS="--secure"' >>/etc/default/tftpd-hpa
 sudo wget http://archive.ubuntu.com/ubuntu/dists/xenial-updates/main/installer-amd64/current/images/netboot/netboot.tar.gz´
 sudo gunzip *.gz
 sudo tar -xvf *.tar
