@@ -10,6 +10,8 @@
 
 #This skript is not finished!
 
+#This scrip will mess your dhcp conf
+
 ############## deploy server installation##################
 cd /etc/apache2/mods-enabled
 $ sudo ln -s ../mods-available/cgi.load
